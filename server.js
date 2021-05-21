@@ -59,24 +59,8 @@ const initServer = async () => {
                         description: 'Health check endpoint'
                     },
                     {
-                        name: 'users',
-                        description: 'User related endpoints'
-                    },
-                    {
-                        name: 'oauth2-resources',
-                        description: 'Oauth2 resources related endpoints'
-                    },
-                    {
-                        name: 'oauth2-scopes',
-                        description: 'Oauth2 scopes related endpoints'
-                    },
-                    {
-                        name: 'oauth2-clients',
-                        description: 'Oauth2 clients related endpoints'
-                    },
-                    {
-                        name: 'oauth2-tokens',
-                        description: 'Oauth2 tokens related endpoints'
+                        name: 'customers',
+                        description: 'Customer related endpoints'
                     },
                     {
                         name: 'reset-cache',
