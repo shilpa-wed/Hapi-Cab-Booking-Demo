@@ -15,11 +15,14 @@ export default {
             if (!request.payload) request.payload = {};
             request.payload.scope = request.user.userType;
 
+            console.log(`request.payload.scope is `, request.payload.scope);
+
             // Check the token is exist in DB or not!
             const dbData = await findOneByCriteria(db.tokens, { token });
             if (isEmpty(dbData) || dbData.userId !== decodedToken.id)
                 throw badData(`The Authorization token is not valid!`);
 
+            request.user.tokenId = dbData.id;
             return {
                 isValid: true
             };
