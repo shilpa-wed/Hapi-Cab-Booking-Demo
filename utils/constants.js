@@ -41,7 +41,7 @@ export const DEFAULT_METADATA_OPTIONS = {
     resourceType: OAUTH_CLIENT_ID
 };
 
-export const tables = {
+export const TABLES = {
     admin: 'admin',
     cabStations: 'cabStations',
     vehicles: 'vehicles',
