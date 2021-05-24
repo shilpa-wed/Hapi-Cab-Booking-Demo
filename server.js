@@ -16,6 +16,8 @@ import dbConfig from 'config/db';
 import hapiPaginationOptions from 'utils/paginationConstants';
 import models from 'models';
 import { cachedUser } from 'utils/cacheMethods';
+import auth from './config/auth';
+import hapiAuthJwt from 'hapi-auth-jwt2';
 
 const prepDatabase = async () => {
     await models.sequelize
@@ -59,8 +61,24 @@ const initServer = async () => {
                         description: 'Health check endpoint'
                     },
                     {
+                        name: 'auth',
+                        description: 'authentication api endpoint'
+                    },
+                    {
                         name: 'customers',
                         description: 'Customer related endpoints'
+                    },
+                    {
+                        name: 'drivers',
+                        description: 'Drivers related endpoints'
+                    },
+                    {
+                        name: 'cabs',
+                        description: 'Cabs(Vehicles) related endpoints'
+                    },
+                    {
+                        name: 'bookings',
+                        description: 'Bookings related endpoints'
                     },
                     {
                         name: 'reset-cache',
@@ -71,18 +89,16 @@ const initServer = async () => {
         }
     ]);
 
-    // Register pagignation plugin
+    // Register pagination plugin
     await server.register({
         plugin: hapiPagination,
         options: hapiPaginationOptions
     });
 
-    /* // register auth plugin
-    await server.register({
-        plugin: authBearer
-    });
-    server.auth.strategy('bearer', 'bearer-access-token', authConfig);
-    server.auth.default('bearer'); */
+    // Register jwt auth strategy and set it to default!
+    await server.register(hapiAuthJwt);
+    await server.auth.strategy('jwt', 'jwt', auth);
+    server.auth.default('jwt');
 
     // Register Wurst plugin
     await server.register({
