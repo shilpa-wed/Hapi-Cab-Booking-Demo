@@ -69,6 +69,10 @@ const initServer = async () => {
                         description: 'Customer related endpoints'
                     },
                     {
+                        name: 'drivers',
+                        description: 'Drivers related endpoints'
+                    },
+                    {
                         name: 'cabs',
                         description: 'Cabs(Vehicles) related endpoints'
                     },
