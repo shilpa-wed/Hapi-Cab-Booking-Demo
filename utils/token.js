@@ -18,6 +18,7 @@ export const createToken = user => {
     return jwt.sign(
         {
             id: user.id,
+            userId: user.id,
             email: user.email,
             userType: user.type ? user.type : USER_TYPE.CUSTOMER,
             scope: scopes

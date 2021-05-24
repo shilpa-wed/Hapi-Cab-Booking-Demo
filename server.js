@@ -85,28 +85,16 @@ const initServer = async () => {
         }
     ]);
 
-    // Register pagignation plugin
+    // Register pagination plugin
     await server.register({
         plugin: hapiPagination,
         options: hapiPaginationOptions
     });
 
-    /* // register auth plugin
-    await server.register({
-        plugin: authBearer
-    });
-    server.auth.strategy('bearer', 'bearer-access-token', authConfig);
-    server.auth.default('bearer'); */
+    // Register jwt auth strategy and set it to default!
     await server.register(hapiAuthJwt);
     await server.auth.strategy('jwt', 'jwt', auth);
     server.auth.default('jwt');
-
-    /* async function registerAuthStrategy (){
-        await server.register(Jwt);
-        server.auth.strategy('jwt', 'jwt', auth);
-        // server.auth.default('jwt');
-    }
-    registerAuthStrategy(); */
 
     // Register Wurst plugin
     await server.register({
