@@ -33,7 +33,7 @@
         "hapi-cors": "^1.0.3",
         "hapi-pagination": "^3.0.0",
         "hapi-rate-limit": "^4.1.0",
-        "hapi-swaggerui": "https://github.com/wednesday-solutions/hapi-swaggerui/#master",
+        "hapi-swaggerui": "https://github.com/tousifws/hapi-swaggerui",
         "jsonwebtoken": "^8.5.1",
         "loadash": "^1.0.0",
         "lodash": "^4.17.15",
